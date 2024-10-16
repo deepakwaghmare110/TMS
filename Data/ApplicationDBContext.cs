@@ -7,7 +7,7 @@ namespace TMS.Data
     {
         public ApplicationDBContext(DbContextOptions<ApplicationDBContext> options) : base(options)
         {
-
+            this.Database.SetCommandTimeout(300);
         }
 
         public DbSet<User> users { get; set; }
