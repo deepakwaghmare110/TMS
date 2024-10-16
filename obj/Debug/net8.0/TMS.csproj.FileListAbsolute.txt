@@ -76,3 +76,5 @@ C:\Users\Samadhan\source\repos\TMS\TMS\obj\Debug\net8.0\TMS.pdb
 C:\Users\Samadhan\source\repos\TMS\TMS\obj\Debug\net8.0\TMS.genruntimeconfig.cache
 C:\Users\Samadhan\source\repos\TMS\TMS\obj\Debug\net8.0\ref\TMS.dll
 C:\Users\Samadhan\source\repos\TMS\TMS\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+C:\Users\Samadhan\source\repos\TMS\TMS\bin\Debug\net8.0\Pipelines.Sockets.Unofficial.dll
+C:\Users\Samadhan\source\repos\TMS\TMS\bin\Debug\net8.0\StackExchange.Redis.dll

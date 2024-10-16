@@ -103,7 +103,7 @@ namespace TMS.Controllers
                     new Claim(JwtRegisteredClaimNames.Sub, _configuration["Jwt:Subject"]!),
                     new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
                     new Claim("UserId", response.Id.ToString()!),
-                    new Claim("Role", response.Role)
+                    new Claim(ClaimTypes.Role, response.Role)
                 };
 
                     var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]!));
@@ -128,8 +128,6 @@ namespace TMS.Controllers
                 return StatusCode(500, "An unexpected error occurred. "+ex.Message);
 
             }
-
-           
             
         }
     }

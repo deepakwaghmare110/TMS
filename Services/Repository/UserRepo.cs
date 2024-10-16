@@ -47,6 +47,23 @@ namespace TMS.Services.Repository
 
         }
 
+        public async Task<IEnumerable<User>> GetUsersAsync()
+        {
+            try
+            {
+                var UsersData = await _context.users
+                                            .FromSqlRaw("EXEC [dbo].[GetUsers]")
+                                            .ToListAsync();
+
+                return UsersData;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "An error occurred while retrieving Users.");
+                throw;
+            }
+        }
+
         public async Task<User> LoginUserAsync(User user)
         {
             try

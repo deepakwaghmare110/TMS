@@ -43,6 +43,7 @@ builder.Services.AddDbContext<ApplicationDBContext>(options =>
 
 builder.Services.AddScoped<IUser, UserRepo>();
 builder.Services.AddScoped<ITask, TasksRepo>();
+builder.Services.AddScoped<ICache, CacheRepo>();
 
 var app = builder.Build();
 

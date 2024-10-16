@@ -7,5 +7,7 @@ namespace TMS.Services.Interfaces
         public Task<string> CreateUserAsync(User user);
 
         public Task<User> LoginUserAsync(User user);
+
+        public Task<IEnumerable<User>> GetUsersAsync();
     }
 }
