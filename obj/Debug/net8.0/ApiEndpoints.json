@@ -108,5 +108,42 @@
       }
     ],
     "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.UsersController",
+    "Method": "UpdateUser",
+    "RelativePath": "users",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userDTO",
+        "Type": "TMS.Models.User",
+        "IsRequired": true
+      },
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.UsersController",
+    "Method": "deleteUser",
+    "RelativePath": "users",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userid",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
   }
 ]

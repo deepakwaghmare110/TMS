@@ -47,6 +47,22 @@ namespace TMS.Services.Repository
 
         }
 
+        public async Task<bool> DeleteUser(int userId)
+        {
+            var uid = new SqlParameter("@UserId", userId);
+            var responseParam = new SqlParameter("@Response", SqlDbType.Bit)
+            {
+                Direction = ParameterDirection.Output
+            };
+
+            await _context.Database.ExecuteSqlRawAsync(
+                "EXEC [dbo].[DeleteUser] @UserId, @Response OUTPUT",
+                uid , responseParam
+                );
+
+            return (bool)responseParam.Value;
+        }
+
         public async Task<IEnumerable<User>> GetUsersAsync()
         {
             try
@@ -99,6 +115,34 @@ namespace TMS.Services.Repository
                     Role = null,
                 };
 
+            }
+        }
+
+        public async Task<string> UpdateUserAsync(User user, int userId)
+        {
+            try
+            {
+                var UserNameParam = new SqlParameter("@UserName", user.UserName ?? (object)DBNull.Value);
+                var passwordParam = new SqlParameter("@Password", user.Password ?? (object)DBNull.Value);
+                var userIdParam = new SqlParameter("@UserId", userId);
+                var RoleParam = new SqlParameter("@Role", user.Role ?? (object)DBNull.Value);
+
+                var responseMessageParam = new SqlParameter("@ResponseMessage", SqlDbType.NVarChar, 256) { Direction = ParameterDirection.Output };
+
+                await _context.Database.ExecuteSqlRawAsync(
+                   "EXEC [dbo].[UpdateUser] @UserId, @UserName, @Password, @Role, @ResponseMessage OUTPUT",
+                   userIdParam, UserNameParam, passwordParam, RoleParam, responseMessageParam
+               );
+
+                var response = responseMessageParam.Value == DBNull.Value ? string.Empty : (string)responseMessageParam.Value;
+                return response;
+
+
+            }
+            catch (Exception ex)
+            {
+                return "Internal server error while updating user.";
+                _logger.LogInformation(ex.Message);
             }
         }
     }
