@@ -1,14 +1,10 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using System.IdentityModel.Tokens.Jwt;
 using TMS.Models;
 using TMS.Services.Interfaces;
-using TMS.Services.Repository;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Microsoft.AspNetCore.Http.HttpResults;
 
 namespace TMS.Controllers
 {
@@ -27,8 +23,16 @@ namespace TMS.Controllers
         }
 
         [HttpPost("register")]
-        public async Task<IActionResult> Register([FromBody] User user)
+        public async Task<IActionResult> Register([FromBody] User userDTO)
         {
+            User user = new()
+            {
+                UserName = userDTO.UserName,
+                Password = userDTO.Password,
+                Id = null,
+                ResponseMessage = null,
+                Role = null
+            };
             // Validate the input
             if (user == null)
             {
@@ -116,7 +120,7 @@ namespace TMS.Controllers
                         signingCredentials: signIn
                         );
                     var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
-                    return Ok(new { Token = tokenValue, RoleName = response.Role });
+                    return Ok(new { Token = tokenValue, RoleName = response.Role, UserId = response.Id });
                 }
                 else
                 {

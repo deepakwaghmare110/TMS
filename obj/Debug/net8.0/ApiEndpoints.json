@@ -2,7 +2,7 @@
   {
     "ContainingType": "TMS.Controllers.AdminController",
     "Method": "GetUsers",
-    "RelativePath": "Admin/Admin/Users",
+    "RelativePath": "Admin/Users",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -39,9 +39,72 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "user",
+        "Name": "userDTO",
         "Type": "TMS.Models.User",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.TaskController",
+    "Method": "AddTask",
+    "RelativePath": "task",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksDTO",
+        "Type": "TMS.Models.Tasks",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.TaskController",
+    "Method": "UpdateTask",
+    "RelativePath": "task",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "tasksDTO",
+        "Type": "TMS.Models.Tasks",
+        "IsRequired": true
+      },
+      {
+        "Name": "taskId",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.TaskController",
+    "Method": "GetTasks",
+    "RelativePath": "task",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "TMS.Controllers.TaskController",
+    "Method": "deleteTask",
+    "RelativePath": "task",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "taskId",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

@@ -10,7 +10,7 @@ using TMS.Services.Interfaces;
 namespace TMS.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("Admin/[controller]")]
+    [Route("Admin")]
     [ApiController]
     public class AdminController : ControllerBase
     {
